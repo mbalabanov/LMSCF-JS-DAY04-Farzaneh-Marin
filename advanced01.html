@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Calculator</title>
+
+	<style>
+		body {
+			font-family: Helvetica, Arial, sans-serif;
+		}
+		#container {
+			width: 25rem;
+			margin: 0 auto;
+		}
+		#calcDisplay {
+			background-color: black;
+			width: 21.7rem;
+			height: 3rem;
+			color: white;
+			text-align: right;
+			padding: 2rem;
+			font-size: 220%;
+		}
+		.calcKeypad {
+			width: 25.7rem;
+			height: 20rem;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.calcButton {
+			width: 3rem;
+			height: 2rem;
+			padding: 1.6rem 1rem 1rem 1rem;
+			background-color: white;
+			text-align: center;
+			margin: 0;
+			border: 1px solid black;
+		}
+		.memFunction {
+			background-color: darkgray;
+			color: white;
+		}
+		.advFunction {
+			background-color: gray;
+			color: white;
+		}
+		.function {
+			background-color: lightgray;
+		}
+		.highlight {
+			background-color: orange;
+			color: white;
+		}
+	</style>
+
+</head>
+<body>
+
+<div id="container">
+	<div id="calcDisplay">
+		0
+	</div>
+	<div class="calcKeypad">
+		<div class="calcButton memFunction" id="mplus">M+</div>
+		<div class="calcButton memFunction" id="mpminus">M-</div>
+		<div class="calcButton memFunction" id="mr">MR</div>
+		<div class="calcButton memFunction" id="ms">MS</div>
+		<div class="calcButton memFunction" id="mc">MC</div>
+
+		<div class="calcButton advFunction" id="plus-minus">+/-</div>
+		<div class="calcButton advFunction" id="left-parenth">(</div>
+		<div class="calcButton advFunction" id="right-parenth">)</div>
+		<div class="calcButton advFunction" id="percent">%</div>
+		<div class="calcButton advFunction" id="c">C</div>
+
+		<div class="calcButton" id="7">7</div>
+		<div class="calcButton" id="8">8</div>
+		<div class="calcButton" id="9">9</div>
+		<div class="calcButton function" id="/">/</div>
+		<div class="calcButton highlight" id="backspace"><</div>
+
+		<div class="calcButton" id="4">4</div>
+		<div class="calcButton" id="5">5</div>
+		<div class="calcButton" id="6">6</div>
+		<div class="calcButton function" id="*">*</div>
+		<div class="calcButton highlight" id="equalsTop"> </div>
+
+		<div class="calcButton" id="1">1</div>
+		<div class="calcButton" id="2">2</div>
+		<div class="calcButton" id="3">3</div>
+		<div class="calcButton function" id="-">-</div>
+		<div class="calcButton highlight" id="equals">=</div>
+
+		<div class="calcButton" id="e">E</div>
+		<div class="calcButton" id="0">0</div>
+		<div class="calcButton" id="dot">.</div>
+		<div class="calcButton function" id="testid" id="+">+</div>
+		<div class="calcButton highlight" id="equalsBottom"> </div>
+	</div>
+</div>
+<script>
+	let allButtons = [];
+	let calculateStore = [];
+
+	allButtons = document.getElementsByClassName('calcButton');
+
+	for (let i in allButtons) {
+		if (allButtons[i].id !== undefined) {
+			document.getElementById(allButtons[i].id).addEventListener('click', function() {
+					calculateResult(this.id);
+			})
+		}
+	}
+
+	function calculateResult(buttonpress) {
+ 		if (buttonpress == 'c') {
+			document.getElementById('calcDisplay').innerHTML = '0';
+			calculateStore = [];
+		}
+		else if (buttonpress != 'equals') {
+			calculateStore.push(buttonpress);
+			document.getElementById('calcDisplay').innerHTML = calculateStore;
+		} else {
+			console.log(calculateStore);
+			calculateStore = [];
+		}
+	}
+
+
+
+</script>
+
+</body>
+</html>
