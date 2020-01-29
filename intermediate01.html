@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hotel Checker</title>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        .red {
+            background-color: red;
+            padding: 0.4rem;
+            color: white;
+            border-radius: 0.4rem;
+            font-size: 0.8rem;
+        }
+        input {
+            width: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hotel Checker</h1>
+
+    <form action="intermediate01_submit" method="get" accept-charset="utf-8">
+        <span id="hotelForm"></span>
+    </form>
+
+    <script>
+
+        function HotelConstructor(name, rooms, bookedRooms) {
+                this.name = name;
+                this.rooms = rooms;
+                this.bookedRooms = bookedRooms;
+            };
+
+        function randomBookedRooms(rooms) {
+            return Math.floor(Math.random() * rooms) + 10;
+            };
+
+        let hotelCentral = new HotelConstructor('Central', 70, randomBookedRooms(70));
+
+        let hotelOrient = new HotelConstructor('Orient', 65, randomBookedRooms(65));
+
+        let hotelCalifornia = new HotelConstructor('California', 50, randomBookedRooms(50));
+
+        function buildBookingButton
+        (hotelname,bookedRooms,rooms) {
+            if (bookedRooms > rooms) {
+                return '<span class="red">Sorry, no free rooms</span>';
+            } else {
+                return '<button type="submit" id="submitButton' + hotelname + '">I\'ll reserve</button>'
+            }
+        }
+
+        let hotelFormContent = 
+            '<p><strong>Hotel ' + hotelCentral.name + '</strong><br>Nights needed: <input type="number" id="requestedNights"> ' + buildBookingButton(hotelCentral.name,hotelCentral.bookedRooms, hotelCentral.rooms) + '</p>' +
+            '<p><strong>Hotel ' + hotelOrient.name + '</strong><br>Nights needed: <input type="number" id="requestedNights"> ' + buildBookingButton(hotelOrient.name,hotelOrient.bookedRooms, hotelOrient.rooms) + '</p>' +
+            '<p><strong>Hotel ' + hotelCalifornia.name + '</strong><br>Nights needed: <input type="number" id="requestedNights"> ' + buildBookingButton(hotelCalifornia.name,hotelCalifornia.bookedRooms, hotelCalifornia.rooms) + '</p>'
+
+
+        document.getElementById('hotelForm').innerHTML = hotelFormContent;
+
+    </script>
+   
+</body>
+</html>	
