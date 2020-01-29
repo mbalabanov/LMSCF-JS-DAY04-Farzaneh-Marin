@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<style>
+		.myFlex {
+			display: flex;
+			width: 24rem;
+		}
+		.flexField {
+			width: 10rem;
+			padding: 1rem;
+		}
+		.outputStyle {
+			background-color: green;
+			color: white;
+			padding: 1rem;
+		}
+	</style>
+</head>
+<body>
+<h1>Text Shortener 3000</h1>
+<p>Please enter a text and the number of characters that it should be shortened to.</p>
+
+<div class="myFlex">
+
+	<div id="formField" class="flexField">
+		
+		<form action="basic02_submit" method="get" accept-charset="utf-8">
+			<p>Please enter a text:</p>
+			<p>
+				<input type="text" name="myText" id="myText">
+			</p>
+			<p>Please enter the number of characters</p>
+			<p>
+				<input type="number" name="characters" id="characters">
+			</p>
+
+			<input type="submit" name="SubmitButton" value="Shorten" id="submitButton">
+
+		</form>
+	</div>
+	<div id="outputField" class="flexField">
+	</div>
+
+</div>
+	<script>
+		document.getElementById('submitButton').addEventListener('click', function(event) {
+				event.preventDefault();
+				let inputText = document.getElementById('myText').value;
+				let inputCharacters = document.getElementById('characters').value;
+				let shortText = 
+inputText.substring(0, inputCharacters);
+				document.getElementById('outputField').innerHTML = '<p class="outputStyle">' +shortText + '</p>';
+		})
+
+	</script>
+</body>
+</html>
