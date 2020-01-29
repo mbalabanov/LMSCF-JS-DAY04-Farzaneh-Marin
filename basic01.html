@@ -15,8 +15,29 @@
 		width: 20rem;
 		margin: 0 auto;
 		padding: 2rem;
-		border: 1px solid brown;
+		border: 1px solid orange;
 		border-radius: 1rem;
+		text-align: center;
+	}
+
+	input {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+	button {
+		padding: 1rem;
+		border-radius: 1rem;
+	}
+	.outputStyle {
+		background-color: red;
+		color: white;
+		padding: 1rem;
+		border-radius: 0.4rem;
 	}
 </style>
 </head>
@@ -30,9 +51,12 @@
 		<p id="ageOutput"></p>
 
 		<form action="basic01_submit" method="get" accept-charset="utf-8">
-			<p>Please enter your year of birth<br>(four figures e.g. 1987): <br>
-			<input type="number" name="yearOfBirth" id="yearOfBirth" placeholder="Enter year of birth"></p>
+			<p>Please enter your year of birth<br>(four figures e.g. 1987): </p>
+			<p>
+				<input type="number" name="yearOfBirth" id="yearOfBirth" placeholder="Enter year of birth">
+			</p>
 			<button type="submit" id="submitbutton">Calculate</button>
+			
 			<!-- <input type="submit" value="Submit"> -->
 		</form>
 
@@ -48,13 +72,13 @@
 
 		if (currentYear < inputYear) {
 			document.getElementById('ageOutput').innerHTML =
-			'Error! Please enter a year in the past';
+			'<span class="outputStyle">Error! Please enter a year in the past</span>';
 		} else if (isNaN(inputYear)) {
 			document.getElementById('ageOutput').innerHTML =
-			'Please enter a valid year.';
+			'<span class="outputStyle">Please enter a valid year.</span>';
 		} else {
 			age = currentYear - inputYear;
-			document.getElementById('ageOutput').innerHTML = 'Your age is: ' + age;
+			document.getElementById('ageOutput').innerHTML = '<span class="outputStyle">Your age is: ' + age + '</span>';
 		}
 	});
 
