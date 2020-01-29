@@ -6,6 +6,17 @@
     <style>
         body {
             font-family: Helvetica, Arial, sans-serif;
+            background-color: #E9F0FA;
+        }
+        #container {
+            background-color: white;
+            width: 24rem;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 0 auto;
+        }
+        #container h1, #container h2 {
+            color: #003580;
         }
         .red {
             background-color: red;
@@ -13,18 +24,26 @@
             color: white;
             border-radius: 0.4rem;
             font-size: 0.8rem;
+            margin-left: 3rem;
         }
         input {
             width: 3rem;
         }
+        .buttonStyle {
+            padding: 0.4rem;
+            border-radius: 0.4rem;
+            margin-left: 3rem;
+        }
     </style>
 </head>
 <body>
-    <h1>Hotel Checker</h1>
-
-    <form action="intermediate01_submit" method="get" accept-charset="utf-8">
-        <span id="hotelForm"></span>
-    </form>
+    <div id="container">
+        <h1>Hotel Checker</h1>
+        <p>Refresh the page a couple of times to see the available number of rooms change.</p>
+        <form action="intermediate01_submit" method="get" accept-charset="utf-8">
+            <span id="hotelForm"></span>
+        </form>
+    </div>
 
     <script>
 
@@ -49,14 +68,14 @@
             if (bookedRooms > rooms) {
                 return '<span class="red">Sorry, no free rooms</span>';
             } else {
-                return '<button type="submit" id="submitButton' + hotelname + '">I\'ll reserve</button>'
+                return '<button type="submit" id="submitButton' + hotelname + '" class="buttonStyle">I\'ll reserve</button>'
             }
         }
 
         let hotelFormContent = 
-            '<p><strong>Hotel ' + hotelCentral.name + '</strong><br>Nights needed: <input type="number" id="requestedNights"> ' + buildBookingButton(hotelCentral.name,hotelCentral.bookedRooms, hotelCentral.rooms) + '</p>' +
-            '<p><strong>Hotel ' + hotelOrient.name + '</strong><br>Nights needed: <input type="number" id="requestedNights"> ' + buildBookingButton(hotelOrient.name,hotelOrient.bookedRooms, hotelOrient.rooms) + '</p>' +
-            '<p><strong>Hotel ' + hotelCalifornia.name + '</strong><br>Nights needed: <input type="number" id="requestedNights"> ' + buildBookingButton(hotelCalifornia.name,hotelCalifornia.bookedRooms, hotelCalifornia.rooms) + '</p>'
+            '<h2>Hotel ' + hotelCentral.name + '</h2><p>Rooms needed: <input type="number" id="requestedNights">&nbsp;' + buildBookingButton(hotelCentral.name,hotelCentral.bookedRooms, hotelCentral.rooms) + '</p><br>' +
+            '<h2>Hotel ' + hotelOrient.name + '</h2><p>Rooms needed: <input type="number" id="requestedNights">&nbsp;' + buildBookingButton(hotelOrient.name,hotelOrient.bookedRooms, hotelOrient.rooms) + '</p><br>' +
+            '<h2>Hotel ' + hotelCalifornia.name + '</h2><p>Rooms needed: <input type="number" id="requestedNights">&nbsp;' + buildBookingButton(hotelCalifornia.name,hotelCalifornia.bookedRooms, hotelCalifornia.rooms) + '</p>'
 
 
         document.getElementById('hotelForm').innerHTML = hotelFormContent;
